@@ -5,6 +5,7 @@ This is an implementation of a Python pipeline dedicated for motion dynamics ana
 
 ### Required libraries
 ___
+The following libraries are needed for the pipeline to run.
 1. [OpenCV](https://opencv.org/get-started/)
 2. [Pytorh](https://pytorch.org/get-started/locally/)
 3. [Kornia](https://github.com/kornia/kornia)
