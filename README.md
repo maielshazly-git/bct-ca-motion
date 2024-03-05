@@ -23,16 +23,14 @@ pip install alive-progress
 ```
 In addition to the above installations, it is necessary to clone [Torch-em](https://github.com/constantinpape/torch-em) as well as its dependency [Elf](https://github.com/constantinpape/elf).
 
-
 ## Folder structure
 
-
-After cloning [bct-ca-motion](https://github.com/maielshazly-git/bct-ca-motion), three more folders are necessary to be placed in the same directory of the source code:
+After cloning [bct-ca-motion](https://github.com/maielshazly-git/bct-ca-motion), 4 more folders should be placed in the same directory of the source code:
 1. Change the name of the cloned directory of [Torch-em](https://github.com/constantinpape/torch-em) to "torch_em".
 2. Change the name of the cloned directory of [Elf](https://github.com/constantinpape/elf) to "elf".
 3. Download the mask generation (and optionally the mask enhancement) model checkpoint(s) from the URL provided in [segmentation-dnns/ReadMe.md](segmentation-dnns/ReadMe.md).
 4. Place the model(s) in a directory under the name "checkpoints".
-5. Place the above 3 directories in the same directory of the source code acquired from [src](src).
+5. Place the above 3 directories as well as the directory containing the input image sequence in the same directory of the source code acquired from [src](src).
 
 The directory layout should be similar to the following:
 
@@ -44,10 +42,27 @@ bct-ca-motion <br />
 &emsp;&emsp;&nbsp;└── ... <br />
 └── torch_em <br />
 &emsp;&emsp;&nbsp;└── ... <br />
+└── images <br />
+&emsp;&emsp;&nbsp;├── ... <br />
 ├── flows_averaging_handler.py <br />
 ├── fluorescence_signals_processor.py <br />
 ├── ... <br />
+<br />
+After completing the execution of the pipeline, all output directories will be automatically placed in one directory called "Output". The output parent directory will be placed in the same directory of the source code; for example, bct-ca-motion in the layout shown above.
 
+## Commands and paramaeters
 
+Navigate to the code directory and run the following command to see a detailed description of all required and optional parameters.
+```
+cd bct-ca-motion
 
-
+python main.py --help
+```
+The input directory of the image sequence and the number of frames per second are the required parameters. Providing them is sufficient for running the pipeline.
+```
+python main.py --input_dir 'images' --frames_per_sec 100
+```
+Optional parameters can be added to replace the default settings of the pipeline. For example, the following command prompts the code to use multiprocessing with 4 CPUs to smooth the normalized images.
+```
+python main.py --input_dir 'images' --frames_per_sec 100 --smooth_multiprocess --cpu_count 4
+```
