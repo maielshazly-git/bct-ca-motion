@@ -66,3 +66,11 @@ Optional parameters can be added to replace the default settings of the pipeline
 ```
 python main.py --input_dir 'images' --frames_per_sec 100 --smooth_multiprocess --cpu_count 4
 ```
+
+## Sample tracking of calcium transients
+
+<p align="center">
+  <img src="sample-output/e-4031_3nM.gif" width="300" title="BCT with low E-4031">
+  <img src="sample-output/ca_0.8mM.gif" width="300" title="BCT with low calcium">
+  <img src="sample-output/nif_10.0uM.gif" width="300" title="BCT with high Nifedipine">
+</p>
